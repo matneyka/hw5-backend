@@ -12,7 +12,7 @@ import com.revature.models.Reimbursement;
 import com.revature.models.User;
 import com.revature.util.ConnectionFactory;
 
-//import oracle.jdbc.OracleTypes;
+import oracle.jdbc.OracleTypes;
 
 public class ReimbursementDAOImpl implements ReimbursementDAO {
 	@Override
@@ -191,23 +191,23 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			cstmt.setInt(2, reimb.getStatus());
 			cstmt.setInt(3, reimb.getResolver());
 			cstmt.setDate(4, reimb.getResolved());
-//			cstmt.registerOutParameter(5, OracleTypes.CURSOR);
+			cstmt.registerOutParameter(5, OracleTypes.CURSOR);
 			
 			cstmt.execute();
 			
-//			ResultSet rs = (ResultSet) cstmt.getObject(5);
-//			
-//			while(rs.next()) {
-//				temp.setAmount(rs.getDouble(2));
-//				temp.setAuthor(rs.getInt(7));
-//				temp.setId(rs.getInt(1));
-//				// temp.setReciept(rs.getBlob(6));
-//				temp.setResolved(rs.getDate(4));
-//				temp.setResolver(rs.getInt(8));
-//				temp.setStatus(rs.getInt(9));
-//				temp.setSubmitted(rs.getDate(3));
-//				temp.setType(rs.getInt(10));
-//			}
+			ResultSet rs = (ResultSet) cstmt.getObject(5);
+			
+			while(rs.next()) {
+				temp.setAmount(rs.getDouble(2));
+				temp.setAuthor(rs.getInt(7));
+				temp.setId(rs.getInt(1));
+				// temp.setReciept(rs.getBlob(6));
+				temp.setResolved(rs.getDate(4));
+				temp.setResolver(rs.getInt(8));
+				temp.setStatus(rs.getInt(9));
+				temp.setSubmitted(rs.getDate(3));
+				temp.setType(rs.getInt(10));
+			}
 			
 			return temp;
 		} catch (SQLException e) {

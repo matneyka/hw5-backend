@@ -17,7 +17,6 @@ Servers
 RemoteSystemsTempFiles/
 .externalToolBuilders/
 *.launch
-.classpath
 .factorypath
 .target
 .recommenders/
